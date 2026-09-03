@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="VoteSphere administrator dashboard.">
+
+    <title>Admin Dashboard | VoteSphere</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+
+</head>
+
+<body class="admin-body">
+
+
+<!-- =========================================================
+     MOBILE OVERLAY
+========================================================= -->
+
+<div class="admin-overlay" id="adminOverlay"></div>
+
+
+<!-- =========================================================
+     SIDEBAR
+========================================================= -->
+
+<aside class="admin-sidebar" id="adminSidebar">
+
+    <div class="admin-sidebar-header">
+
+        <a href="../index.html" class="admin-logo">
+
+            <span class="admin-logo-icon">
+                ✓
+            </span>
+
+            <span>
+                VoteSphere
+            </span>
+
+        </a>
+
+        <span class="admin-label">
+            ADMIN
+        </span>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="admin-nav">
+
+        <div class="admin-nav-section">
+
+            <span class="admin-nav-title">
+                MAIN
+            </span>
+
+            <a href="admin-dashboard.html"
+               class="admin-nav-link active">
+
+                <span class="nav-link-icon">
+                    ▦
+                </span>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+            <a href="admin-elections.html"
+               class="admin-nav-link">
+
+                <span class="nav-link-icon">
+                    🗳
+                </span>
+
+                <span>
+                    Elections
+                </span>
+
+            </a>
+
+            <a href="admin-candidates.html"
+               class="admin-nav-link">
+
+                <span class="nav-link-icon">
+                    👤
+                </span>
+
+                <span>
+                    Candidates
+                </span>
+
+            </a>
+
+            <a href="admin-voters.html"
+               class="admin-nav-link">
+
+                <span class="nav-link-icon">
+                    👥
+                </span>
+
+                <span>
+                    Voters
+                </span>
+
+            </a>
+
+        </div>
+
+
+        <div class="admin-nav-section">
+
+            <span class="admin-nav-title">
+                MONITORING
+            </span>
+
+            <a href="results.html"
+               class="admin-nav-link">
+
+                <span class="nav-link-icon">
+                    📊
+                </span>
+
+                <span>
+                    Results
+                </span>
+
+            </a>
+
+            <a href="#activity"
+               class="admin-nav-link">
+
+                <span class="nav-link-icon">
+                    ◷
+                </span>
+
+                <span>
+                    Activity Log
+                </span>
+
+            </a>
+
+        </div>
+
+
+        <div class="admin-nav-section">
+
+            <span class="admin-nav-title">
+                SYSTEM
+            </span>
+
+            <a href="#settings"
+               class="admin-nav-link">
+
+                <span class="nav-link-icon">
+                    ⚙
+                </span>
+
+                <span>
+                    Settings
+                </span>
+
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- SIDEBAR FOOTER -->
+
+    <div class="admin-sidebar-footer">
+
+        <a href="../index.html"
+           class="view-site-link">
+
+            <span>
+                ↗
+            </span>
+
+            View Public Site
+
+        </a>
+
+
+        <button
+            type="button"
+            class="admin-logout-sidebar"
+            id="logoutButton">
+
+            <span>
+                ⇥
+            </span>
+
+            Sign Out
+
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- =========================================================
+     MAIN AREA
+========================================================= -->
+
+<div class="admin-main">
+
+
+    <!-- =====================================================
+         TOPBAR
+    ====================================================== -->
+
+    <header class="admin-topbar">
+
+        <div class="admin-topbar-left">
+
+            <button
+                type="button"
+                class="admin-menu-button"
+                id="menuButton"
+                aria-label="Open menu">
+
+                ☰
+
+            </button>
+
+            <div>
+
+                <span class="topbar-label">
+                    ADMINISTRATION
+                </span>
+
+                <h1>
+                    Dashboard
+                </h1>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-topbar-right">
+
+            <button
+                type="button"
+                class="notification-button"
+                aria-label="Notifications">
+
+                🔔
+
+                <span class="notification-dot"></span>
+
+            </button>
+
+
+            <div class="admin-profile">
+
+                <div class="admin-avatar">
+                    AD
+                </div>
+
+                <div class="admin-profile-info">
+
+                    <strong>
+                        Administrator
+                    </strong>
+
+                    <span id="adminEmail">
+                        admin@votesphere.com
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         CONTENT
+    ====================================================== -->
+
+    <main class="admin-content">
+
+
+        <!-- WELCOME -->
+
+        <section class="admin-welcome">
+
+            <div>
+
+                <span class="welcome-label">
+                    OVERVIEW
+                </span>
+
+                <h2>
+                    Welcome back, Administrator
+                </h2>
+
+                <p>
+                    Here's what's happening across
+                    your VoteSphere platform.
+                </p>
+
+            </div>
+
+            <div class="dashboard-date">
+
+                <span>
+                    TODAY
+                </span>
+
+                <strong id="currentDate">
+                    September 3, 2026
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             STATISTICS
+        ================================================== -->
+
+        <section class="admin-stats">
+
+
+            <div class="admin-stat-card">
+
+                <div class="stat-card-top">
+
+                    <div class="stat-icon blue">
+                        🗳
+                    </div>
+
+                    <span class="stat-change positive">
+                        +2
+                    </span>
+
+                </div>
+
+                <span class="stat-label">
+                    Total Elections
+                </span>
+
+                <strong class="stat-value">
+                    4
+                </strong>
+
+                <span class="stat-description">
+                    2 currently active
+                </span>
+
+            </div>
+
+
+            <div class="admin-stat-card">
+
+                <div class="stat-card-top">
+
+                    <div class="stat-icon purple">
+                        👥
+                    </div>
+
+                    <span class="stat-change positive">
+                        +8.2%
+                    </span>
+
+                </div>
+
+                <span class="stat-label">
+                    Registered Voters
+                </span>
+
+                <strong class="stat-value">
+                    2,450
+                </strong>
+
+                <span class="stat-description">
+                    Eligible voters
+                </span>
+
+            </div>
+
+
+            <div class="admin-stat-card">
+
+                <div class="stat-card-top">
+
+                    <div class="stat-icon green">
+                        ✓
+                    </div>
+
+                    <span class="stat-change positive">
+                        +12.5%
+                    </span>
+
+                </div>
+
+                <span class="stat-label">
+                    Votes Cast
+                </span>
+
+                <strong class="stat-value">
+                    1,872
+                </strong>
+
+                <span class="stat-description">
+                    76.4% turnout
+                </span>
+
+            </div>
+
+
+            <div class="admin-stat-card">
+
+                <div class="stat-card-top">
+
+                    <div class="stat-icon orange">
+                        ◉
+                    </div>
+
+                    <span class="stat-change neutral">
+                        Active
+                    </span>
+
+                </div>
+
+                <span class="stat-label">
+                    Active Elections
+                </span>
+
+                <strong class="stat-value">
+                    2
+                </strong>
+
+                <span class="stat-description">
+                    Voting is open
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             QUICK ACTIONS
+        ================================================== -->
+
+        <section class="quick-actions-section">
+
+            <div class="section-title-row">
+
+                <div>
+
+                    <span class="section-label">
+                        SHORTCUTS
+                    </span>
+
+                    <h2>
+                        Quick Actions
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="quick-actions">
+
+                <a href="admin-elections.html"
+                   class="quick-action">
+
+                    <span class="quick-action-icon">
+                        +
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Create Election
+                        </strong>
+
+                        <span>
+                            Start a new election
+                        </span>
+
+                    </div>
+
+                    <span class="quick-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <a href="admin-candidates.html"
+                   class="quick-action">
+
+                    <span class="quick-action-icon">
+                        +
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Add Candidate
+                        </strong>
+
+                        <span>
+                            Register a candidate
+                        </span>
+
+                    </div>
+
+                    <span class="quick-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <a href="admin-voters.html"
+                   class="quick-action">
+
+                    <span class="quick-action-icon">
+                        👥
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Manage Voters
+                        </strong>
+
+                        <span>
+                            View voter records
+                        </span>
+
+                    </div>
+
+                    <span class="quick-arrow">
+                        →
+                    </span>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             TWO COLUMN AREA
+        ================================================== -->
+
+        <div class="dashboard-grid">
+
+
+            <!-- =================================================
+                 RECENT ELECTIONS
+            ================================================== -->
+
+            <section class="admin-panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <span class="section-label">
+                            ELECTIONS
+                        </span>
+
+                        <h2>
+                            Recent Elections
+                        </h2>
+
+                    </div>
+
+                    <a href="admin-elections.html">
+                        View All
+                    </a>
+
+                </div>
+
+
+                <div class="election-table-wrapper">
+
+                    <table class="admin-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Election
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Votes
+                                </th>
+
+                                <th>
+                                    Turnout
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>
+
+                                    <div class="table-election">
+
+                                        <span class="table-election-icon">
+                                            SC
+                                        </span>
+
+                                        <div>
+
+                                            <strong>
+                                                Student Council
+                                            </strong>
+
+                                            <span>
+                                                Sep 1 – Sep 15, 2026
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+                                    <span class="status active">
+                                        Active
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <strong>
+                                        1,872
+                                    </strong>
+                                </td>
+
+                                <td>
+                                    76.4%
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+
+                                    <div class="table-election">
+
+                                        <span class="table-election-icon">
+                                            EC
+                                        </span>
+
+                                        <div>
+
+                                            <strong>
+                                                Environmental Committee
+                                            </strong>
+
+                                            <span>
+                                                Sep 3 – Sep 12, 2026
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+                                    <span class="status active">
+                                        Active
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <strong>
+                                        864
+                                    </strong>
+                                </td>
+
+                                <td>
+                                    42.0%
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+
+                                    <div class="table-election">
+
+                                        <span class="table-election-icon">
+                                            SA
+                                        </span>
+
+                                        <div>
+
+                                            <strong>
+                                                Student Association
+                                            </strong>
+
+                                            <span>
+                                                Oct 1 – Oct 10, 2026
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+                                    <span class="status upcoming">
+                                        Upcoming
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <strong>
+                                        —
+                                    </strong>
+                                </td>
+
+                                <td>
+                                    —
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+
+                                    <div class="table-election">
+
+                                        <span class="table-election-icon">
+                                            TC
+                                        </span>
+
+                                        <div>
+
+                                            <strong>
+                                                Technology Committee
+                                            </strong>
+
+                                            <span>
+                                                Aug 5 – Aug 12, 2026
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+                                    <span class="status completed">
+                                        Completed
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <strong>
+                                        1,634
+                                    </strong>
+
+                                </td>
+
+                                <td>
+                                    71.2%
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 VOTING ACTIVITY
+            ================================================== -->
+
+            <section class="admin-panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <span class="section-label">
+                            LIVE MONITOR
+                        </span>
+
+                        <h2>
+                            Voting Activity
+                        </h2>
+
+                    </div>
+
+                    <span class="live-indicator">
+                        <span></span>
+                        LIVE
+                    </span>
+
+                </div>
+
+
+                <div class="activity-summary">
+
+                    <div>
+
+                        <span>
+                            Today's Votes
+                        </span>
+
+                        <strong>
+                            326
+                        </strong>
+
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Last Hour
+                        </span>
+
+                        <strong>
+                            42
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="activity-chart">
+
+                    <div class="chart-bars">
+
+                        <div class="chart-column">
+                            <span style="height: 35%;"></span>
+                            <small>8AM</small>
+                        </div>
+
+                        <div class="chart-column">
+                            <span style="height: 48%;"></span>
+                            <small>9AM</small>
+                        </div>
+
+                        <div class="chart-column">
+                            <span style="height: 62%;"></span>
+                            <small>10AM</small>
+                        </div>
+
+                        <div class="chart-column">
+                            <span style="height: 76%;"></span>
+                            <small>11AM</small>
+                        </div>
+
+                        <div class="chart-column">
+                            <span style="height: 58%;"></span>
+                            <small>12PM</small>
+                        </div>
+
+                        <div class="chart-column">
+                            <span style="height: 82%;"></span>
+                            <small>1PM</small>
+                        </div>
+
+                        <div class="chart-column">
+                            <span style="height: 67%;"></span>
+                            <small>2PM</small>
+                        </div>
+
+                        <div class="chart-column">
+                            <span style="height: 91%;"></span>
+                            <small>3PM</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="activity-footer">
+
+                    <span>
+                        Voting activity is updated in real time.
+                    </span>
+
+                    <span class="activity-secure">
+                        🔐 Secure
+                    </span>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- =================================================
+             SYSTEM ACTIVITY
+        ================================================== -->
+
+        <section class="admin-panel activity-log"
+                 id="activity">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="section-label">
+                        SYSTEM
+                    </span>
+
+                    <h2>
+                        Recent Activity
+                    </h2>
+
+                </div>
+
+                <a href="#activity">
+                    View Log
+                </a>
+
+            </div>
+
+
+            <div class="activity-list">
+
+
+                <div class="activity-item">
+
+                    <div class="activity-icon vote">
+                        ✓
+                    </div>
+
+                    <div class="activity-content">
+
+                        <strong>
+                            42 votes recorded
+                        </strong>
+
+                        <span>
+                            Student Council Election
+                        </span>
+
+                    </div>
+
+                    <time>
+                        5 minutes ago
+                    </time>
+
+                </div>
+
+
+                <div class="activity-item">
+
+                    <div class="activity-icon voter">
+                        👤
+                    </div>
+
+                    <div class="activity-content">
+
+                        <strong>
+                            New voter registrations
+                        </strong>
+
+                        <span>
+                            18 new voters registered today
+                        </span>
+
+                    </div>
+
+                    <time>
+                        32 minutes ago
+                    </time>
+
+                </div>
+
+
+                <div class="activity-item">
+
+                    <div class="activity-icon election">
+                        🗳
+                    </div>
+
+                    <div class="activity-content">
+
+                        <strong>
+                            Election created
+                        </strong>
+
+                        <span>
+                            Student Association Election 2026
+                        </span>
+
+                    </div>
+
+                    <time>
+                        2 hours ago
+                    </time>
+
+                </div>
+
+
+                <div class="activity-item">
+
+                    <div class="activity-icon system">
+                        ⚙
+                    </div>
+
+                    <div class="activity-content">
+
+                        <strong>
+                            System settings updated
+                        </strong>
+
+                        <span>
+                            Election notification preferences changed
+                        </span>
+
+                    </div>
+
+                    <time>
+                        Yesterday
+                    </time>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SECURITY STATUS
+        ================================================== -->
+
+        <section class="admin-security-status">
+
+            <div class="security-status-icon">
+                🔐
+            </div>
+
+            <div class="security-status-content">
+
+                <strong>
+                    VoteSphere Security Status
+                </strong>
+
+                <span>
+                    All systems operational. Voting infrastructure
+                    is protected and monitoring is active.
+                </span>
+
+            </div>
+
+            <div class="security-status-badge">
+                <span></span>
+                Operational
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="admin-footer">
+
+        <span>
+            © <span id="footerYear"></span> VoteSphere
+        </span>
+
+        <span>
+            Administration Panel
+        </span>
+
+    </footer>
+
+</div>
+
+
+<script src="../js/app.js"></script>
+<script src="../js/admin.js"></script>
+
+</body>
+
+</html>
