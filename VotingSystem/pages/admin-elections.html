@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Manage elections in VoteSphere administration.">
+
+    <title>Elections Management | VoteSphere</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/admin-elections.css">
+
+</head>
+
+<body class="admin-body">
+
+<div class="admin-overlay" id="adminOverlay"></div>
+
+<!-- =========================================================
+     SIDEBAR
+========================================================= -->
+
+<aside class="admin-sidebar" id="adminSidebar">
+
+    <div class="admin-sidebar-header">
+
+        <a href="../index.html" class="admin-logo">
+
+            <span class="admin-logo-icon">✓</span>
+
+            <span>VoteSphere</span>
+
+        </a>
+
+        <span class="admin-label">
+            ADMIN
+        </span>
+
+    </div>
+
+
+    <nav class="admin-nav">
+
+        <div class="admin-nav-section">
+
+            <span class="admin-nav-title">
+                MAIN
+            </span>
+
+            <a href="admin-dashboard.html"
+               class="admin-nav-link">
+
+                <span class="nav-link-icon">▦</span>
+                <span>Dashboard</span>
+
+            </a>
+
+            <a href="admin-elections.html"
+               class="admin-nav-link active">
+
+                <span class="nav-link-icon">🗳</span>
+                <span>Elections</span>
+
+            </a>
+
+            <a href="admin-candidates.html"
+               class="admin-nav-link">
+
+                <span class="nav-link-icon">👤</span>
+                <span>Candidates</span>
+
+            </a>
+
+            <a href="admin-voters.html"
+               class="admin-nav-link">
+
+                <span class="nav-link-icon">👥</span>
+                <span>Voters</span>
+
+            </a>
+
+        </div>
+
+
+        <div class="admin-nav-section">
+
+            <span class="admin-nav-title">
+                MONITORING
+            </span>
+
+            <a href="results.html"
+               class="admin-nav-link">
+
+                <span class="nav-link-icon">📊</span>
+                <span>Results</span>
+
+            </a>
+
+            <a href="#"
+               class="admin-nav-link">
+
+                <span class="nav-link-icon">◷</span>
+                <span>Activity Log</span>
+
+            </a>
+
+        </div>
+
+
+        <div class="admin-nav-section">
+
+            <span class="admin-nav-title">
+                SYSTEM
+            </span>
+
+            <a href="#"
+               class="admin-nav-link">
+
+                <span class="nav-link-icon">⚙</span>
+                <span>Settings</span>
+
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <div class="admin-sidebar-footer">
+
+        <a href="../index.html"
+           class="view-site-link">
+
+            <span>↗</span>
+            View Public Site
+
+        </a>
+
+        <button
+            type="button"
+            class="admin-logout-sidebar"
+            id="logoutButton">
+
+            <span>⇥</span>
+            Sign Out
+
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<div class="admin-main">
+
+
+    <!-- TOPBAR -->
+
+    <header class="admin-topbar">
+
+        <div class="admin-topbar-left">
+
+            <button
+                type="button"
+                class="admin-menu-button"
+                id="menuButton">
+
+                ☰
+
+            </button>
+
+            <div>
+
+                <span class="topbar-label">
+                    ELECTION MANAGEMENT
+                </span>
+
+                <h1>
+                    Elections
+                </h1>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-topbar-right">
+
+            <button
+                type="button"
+                class="notification-button"
+                aria-label="Notifications">
+
+                🔔
+
+                <span class="notification-dot"></span>
+
+            </button>
+
+
+            <div class="admin-profile">
+
+                <div class="admin-avatar">
+                    AD
+                </div>
+
+                <div class="admin-profile-info">
+
+                    <strong>
+                        Administrator
+                    </strong>
+
+                    <span id="adminEmail">
+                        admin@votesphere.com
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- CONTENT -->
+
+    <main class="admin-content">
+
+
+        <!-- PAGE HEADER -->
+
+        <section class="elections-page-header">
+
+            <div>
+
+                <span class="section-label">
+                    ELECTION MANAGEMENT
+                </span>
+
+                <h2>
+                    Manage Elections
+                </h2>
+
+                <p>
+                    Create, configure, monitor and manage
+                    all VoteSphere elections.
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="create-election-button"
+                id="openCreateElection">
+
+                <span>+</span>
+                Create Election
+
+            </button>
+
+        </section>
+
+
+        <!-- STATISTICS -->
+
+        <section class="election-mini-stats">
+
+            <div class="election-mini-card">
+
+                <span class="mini-icon blue">
+                    🗳
+                </span>
+
+                <div>
+
+                    <span>
+                        Total Elections
+                    </span>
+
+                    <strong>
+                        4
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="election-mini-card">
+
+                <span class="mini-icon green">
+                    ◉
+                </span>
+
+                <div>
+
+                    <span>
+                        Active
+                    </span>
+
+                    <strong>
+                        2
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="election-mini-card">
+
+                <span class="mini-icon purple">
+                    ◷
+                </span>
+
+                <div>
+
+                    <span>
+                        Upcoming
+                    </span>
+
+                    <strong>
+                        1
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="election-mini-card">
+
+                <span class="mini-icon gray">
+                    ✓
+                </span>
+
+                <div>
+
+                    <span>
+                        Completed
+                    </span>
+
+                    <strong>
+                        1
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TOOLBAR -->
+
+        <section class="elections-toolbar">
+
+            <div class="election-search">
+
+                <span>
+                    ⌕
+                </span>
+
+                <input
+                    type="search"
+                    id="electionSearch"
+                    placeholder="Search elections...">
+
+            </div>
+
+
+            <div class="election-filters">
+
+                <button
+                    type="button"
+                    class="election-filter active"
+                    data-filter="all">
+
+                    All
+                    <span>4</span>
+
+                </button>
+
+                <button
+                    type="button"
+                    class="election-filter"
+                    data-filter="active">
+
+                    Active
+                    <span>2</span>
+
+                </button>
+
+                <button
+                    type="button"
+                    class="election-filter"
+                    data-filter="upcoming">
+
+                    Upcoming
+                    <span>1</span>
+
+                </button>
+
+                <button
+                    type="button"
+                    class="election-filter"
+                    data-filter="completed">
+
+                    Completed
+                    <span>1</span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ELECTION TABLE -->
+
+        <section class="admin-panel elections-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="section-label">
+                        ALL ELECTIONS
+                    </span>
+
+                    <h2>
+                        Election Records
+                    </h2>
+
+                </div>
+
+                <span class="record-count"
+                      id="recordCount">
+
+                    4 elections
+
+                </span>
+
+            </div>
+
+
+            <div class="elections-table-wrapper">
+
+                <table class="admin-table elections-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Election
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Voting Period
+                            </th>
+
+                            <th>
+                                Candidates
+                            </th>
+
+                            <th>
+                                Votes
+                            </th>
+
+                            <th>
+                                Turnout
+                            </th>
+
+                            <th>
+                                Actions
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="electionsTableBody">
+
+
+                        <!-- ROW 1 -->
+
+                        <tr data-status="active"
+                            data-name="Student Council Election 2026">
+
+                            <td>
+
+                                <div class="election-record">
+
+                                    <span class="record-icon">
+                                        SC
+                                    </span>
+
+                                    <div>
+
+                                        <strong>
+                                            Student Council Election 2026
+                                        </strong>
+
+                                        <span>
+                                            ID: VS-SC-2026
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+
+                                <span class="status active">
+                                    Active
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                <div class="period">
+
+                                    <strong>
+                                        Sep 1 – Sep 15, 2026
+                                    </strong>
+
+                                    <span>
+                                        Ends 11:59 PM
+                                    </span>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+                                12
+                            </td>
+
+
+                            <td>
+                                <strong>1,872</strong>
+                            </td>
+
+
+                            <td>
+
+                                <div class="turnout-cell">
+
+                                    <div class="turnout-bar">
+
+                                        <span style="width:76.4%"></span>
+
+                                    </div>
+
+                                    <strong>
+                                        76.4%
+                                    </strong>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+
+                                <div class="row-actions">
+
+                                    <button
+                                        type="button"
+                                        class="row-action view"
+                                        data-action="view"
+                                        title="View">
+
+                                        👁
+
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="row-action edit"
+                                        data-action="edit"
+                                        title="Edit">
+
+                                        ✎
+
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="row-action danger"
+                                        data-action="delete"
+                                        title="Delete">
+
+                                        ×
+
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- ROW 2 -->
+
+                        <tr data-status="active"
+                            data-name="Environmental Committee Election">
+
+                            <td>
+
+                                <div class="election-record">
+
+                                    <span class="record-icon">
+                                        EC
+                                    </span>
+
+                                    <div>
+
+                                        <strong>
+                                            Environmental Committee Election
+                                        </strong>
+
+                                        <span>
+                                            ID: VS-EC-2026
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+
+                                <span class="status active">
+                                    Active
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                <div class="period">
+
+                                    <strong>
+                                        Sep 3 – Sep 12, 2026
+                                    </strong>
+
+                                    <span>
+                                        Ends 11:59 PM
+                                    </span>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+                                8
+                            </td>
+
+
+                            <td>
+                                <strong>864</strong>
+                            </td>
+
+
+                            <td>
+
+                                <div class="turnout-cell">
+
+                                    <div class="turnout-bar">
+
+                                        <span style="width:42%"></span>
+
+                                    </div>
+
+                                    <strong>
+                                        42.0%
+                                    </strong>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+
+                                <div class="row-actions">
+
+                                    <button
+                                        type="button"
+                                        class="row-action view"
+                                        data-action="view">
+
+                                        👁
+
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="row-action edit"
+                                        data-action="edit">
+
+                                        ✎
+
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="row-action danger"
+                                        data-action="delete">
+
+                                        ×
+
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- ROW 3 -->
+
+                        <tr data-status="upcoming"
+                            data-name="Student Association Election 2026">
+
+                            <td>
+
+                                <div class="election-record">
+
+                                    <span class="record-icon">
+                                        SA
+                                    </span>
+
+                                    <div>
+
+                                        <strong>
+                                            Student Association Election 2026
+                                        </strong>
+
+                                        <span>
+                                            ID: VS-SA-2026
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+
+                                <span class="status upcoming">
+                                    Upcoming
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                <div class="period">
+
+                                    <strong>
+                                        Oct 1 – Oct 10, 2026
+                                    </strong>
+
+                                    <span>
+                                        Opens Oct 1
+                                    </span>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+                                15
+                            </td>
+
+
+                            <td>
+                                <strong>—</strong>
+                            </td>
+
+
+                            <td>
+                                —
+                            </td>
+
+
+                            <td>
+
+                                <div class="row-actions">
+
+                                    <button
+                                        type="button"
+                                        class="row-action view"
+                                        data-action="view">
+
+                                        👁
+
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="row-action edit"
+                                        data-action="edit">
+
+                                        ✎
+
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="row-action danger"
+                                        data-action="delete">
+
+                                        ×
+
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- ROW 4 -->
+
+                        <tr data-status="completed"
+                            data-name="Campus Technology Committee Election">
+
+                            <td>
+
+                                <div class="election-record">
+
+                                    <span class="record-icon">
+                                        TC
+                                    </span>
+
+                                    <div>
+
+                                        <strong>
+                                            Campus Technology Committee Election
+                                        </strong>
+
+                                        <span>
+                                            ID: VS-TC-2026
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+
+                                <span class="status completed">
+                                    Completed
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                <div class="period">
+
+                                    <strong>
+                                        Aug 5 – Aug 12, 2026
+                                    </strong>
+
+                                    <span>
+                                        Election closed
+                                    </span>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+                                10
+                            </td>
+
+
+                            <td>
+                                <strong>1,634</strong>
+                            </td>
+
+
+                            <td>
+
+                                <div class="turnout-cell">
+
+                                    <div class="turnout-bar">
+
+                                        <span style="width:71.2%"></span>
+
+                                    </div>
+
+                                    <strong>
+                                        71.2%
+                                    </strong>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+
+                                <div class="row-actions">
+
+                                    <button
+                                        type="button"
+                                        class="row-action view"
+                                        data-action="view">
+
+                                        👁
+
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="row-action edit"
+                                        data-action="edit">
+
+                                        ✎
+
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="row-action danger"
+                                        data-action="delete">
+
+                                        ×
+
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- EMPTY STATE -->
+
+            <div class="elections-empty"
+                 id="electionsEmpty">
+
+                <div>
+                    ⌕
+                </div>
+
+                <h3>
+                    No elections found
+                </h3>
+
+                <p>
+                    Try changing your search or filter.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- SECURITY NOTICE -->
+
+        <section class="admin-security-status">
+
+            <div class="security-status-icon">
+                🔐
+            </div>
+
+            <div class="security-status-content">
+
+                <strong>
+                    Election Management Security
+                </strong>
+
+                <span>
+                    Election configuration changes are logged
+                    and protected by administrator authentication.
+                </span>
+
+            </div>
+
+            <div class="security-status-badge">
+
+                <span></span>
+                Protected
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="admin-footer">
+
+        <span>
+            © <span id="footerYear"></span> VoteSphere
+        </span>
+
+        <span>
+            Administration Panel
+        </span>
+
+    </footer>
+
+</div>
+
+
+<!-- =========================================================
+     CREATE / EDIT MODAL
+========================================================= -->
+
+<div class="admin-modal-overlay"
+     id="electionModal">
+
+    <div class="admin-modal">
+
+        <div class="admin-modal-header">
+
+            <div>
+
+                <span class="section-label">
+                    ELECTION SETUP
+                </span>
+
+                <h2 id="modalTitle">
+                    Create Election
+                </h2>
+
+            </div>
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeElectionModal">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <form id="electionForm">
+
+
+            <div class="form-group">
+
+                <label for="electionName">
+                    Election Name
+                </label>
+
+                <input
+                    type="text"
+                    id="electionName"
+                    placeholder="e.g. Student Council Election 2026"
+                    required>
+
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label for="startDate">
+                        Start Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="startDate"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="endDate">
+                        End Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="endDate"
+                        required>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label for="startTime">
+                        Start Time
+                    </label>
+
+                    <input
+                        type="time"
+                        id="startTime"
+                        value="00:00"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="endTime">
+                        End Time
+                    </label>
+
+                    <input
+                        type="time"
+                        id="endTime"
+                        value="23:59"
+                        required>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="electionDescription">
+                    Description
+                </label>
+
+                <textarea
+                    id="electionDescription"
+                    rows="4"
+                    placeholder="Describe the purpose of this election..."></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="electionStatus">
+                    Initial Status
+                </label>
+
+                <select id="electionStatus">
+
+                    <option value="upcoming">
+                        Upcoming
+                    </option>
+
+                    <option value="active">
+                        Active
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="modal-notice">
+
+                🔐
+                Election changes will be recorded
+                in the administration activity log.
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="modal-cancel"
+                    id="cancelElection">
+
+                    Cancel
+
+                </button>
+
+                <button
+                    type="submit"
+                    class="modal-submit">
+
+                    <span id="submitElectionText">
+                        Create Election
+                    </span>
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="../js/app.js"></script>
+<script src="../js/admin.js"></script>
+<script src="../js/admin-elections.js"></script>
+
+</body>
+
+</html>
