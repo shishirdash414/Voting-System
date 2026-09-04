@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="VoteSphere admin voter management dashboard.">
+
+    <title>Voter Management | VoteSphere Admin</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/admin-voters.css">
+</head>
+
+<body class="admin-page">
+
+<div class="admin-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar" id="adminSidebar">
+
+        <div class="admin-brand">
+            <a href="admin-dashboard.html" class="admin-logo">
+                <span class="logo-mark">V</span>
+                <span>
+                    <strong>VoteSphere</strong>
+                    <small>Administration</small>
+                </span>
+            </a>
+        </div>
+
+        <nav class="admin-nav">
+
+            <div class="nav-section">
+                <span class="nav-section-title">MAIN</span>
+
+                <a href="admin-dashboard.html" class="admin-nav-link">
+                    <span class="nav-icon">▦</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="admin-elections.html" class="admin-nav-link">
+                    <span class="nav-icon">◫</span>
+                    <span>Elections</span>
+                </a>
+
+                <a href="admin-candidates.html" class="admin-nav-link">
+                    <span class="nav-icon">♙</span>
+                    <span>Candidates</span>
+                </a>
+
+                <a href="admin-voters.html" class="admin-nav-link active">
+                    <span class="nav-icon">♟</span>
+                    <span>Voters</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <span class="nav-section-title">MONITORING</span>
+
+                <a href="results.html" class="admin-nav-link">
+                    <span class="nav-icon">▥</span>
+                    <span>Results</span>
+                </a>
+
+                <a href="#" class="admin-nav-link">
+                    <span class="nav-icon">◷</span>
+                    <span>Activity Log</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <span class="nav-section-title">SYSTEM</span>
+
+                <a href="#" class="admin-nav-link">
+                    <span class="nav-icon">⚙</span>
+                    <span>Settings</span>
+                </a>
+
+                <a href="../index.html" class="admin-nav-link">
+                    <span class="nav-icon">↗</span>
+                    <span>View Public Site</span>
+                </a>
+            </div>
+
+        </nav>
+
+        <div class="admin-sidebar-footer">
+
+            <div class="admin-user-mini">
+                <div class="admin-avatar">A</div>
+
+                <div class="admin-user-info">
+                    <strong>Administrator</strong>
+                    <span id="sidebarAdminEmail">admin@votesphere.com</span>
+                </div>
+            </div>
+
+            <button id="logoutButton" class="admin-logout">
+                <span>↪</span>
+                Sign Out
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="admin-main">
+
+        <!-- TOPBAR -->
+        <header class="admin-topbar">
+
+            <div class="topbar-left">
+
+                <button class="mobile-menu-button"
+                        id="mobileMenuButton"
+                        aria-label="Open menu">
+                    ☰
+                </button>
+
+                <div>
+                    <span class="topbar-label">ADMINISTRATION</span>
+                    <h1>Voter Management</h1>
+                </div>
+
+            </div>
+
+            <div class="topbar-right">
+
+                <button class="notification-button"
+                        aria-label="Notifications">
+                    🔔
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="topbar-admin">
+                    <div class="admin-avatar small">A</div>
+
+                    <div>
+                        <strong>Administrator</strong>
+                        <span id="topbarAdminEmail">admin@votesphere.com</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+        <section class="admin-content">
+
+            <!-- PAGE HEADER -->
+            <div class="voter-page-header">
+
+                <div>
+                    <div class="breadcrumb">
+                        <a href="admin-dashboard.html">Dashboard</a>
+                        <span>/</span>
+                        <span>Voters</span>
+                    </div>
+
+                    <h2>Registered Voters</h2>
+
+                    <p>
+                        Manage voter accounts, verification status,
+                        eligibility and voting activity.
+                    </p>
+                </div>
+
+                <div class="voter-header-actions">
+                    <button class="btn btn-secondary" id="exportVotersButton">
+                        ↓ Export Records
+                    </button>
+
+                    <button class="btn btn-primary" id="refreshVotersButton">
+                        ↻ Refresh
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- STATS -->
+            <div class="voter-stats-grid">
+
+                <div class="voter-stat-card">
+
+                    <div class="stat-icon">♟</div>
+
+                    <div>
+                        <span>Total Voters</span>
+                        <strong id="totalVoters">2,450</strong>
+                        <small>Registered accounts</small>
+                    </div>
+
+                </div>
+
+
+                <div class="voter-stat-card">
+
+                    <div class="stat-icon verified">✓</div>
+
+                    <div>
+                        <span>Verified Voters</span>
+                        <strong id="verifiedVoters">2,310</strong>
+                        <small>94.3% verified</small>
+                    </div>
+
+                </div>
+
+
+                <div class="voter-stat-card">
+
+                    <div class="stat-icon eligible">✓</div>
+
+                    <div>
+                        <span>Eligible Voters</span>
+                        <strong id="eligibleVoters">2,380</strong>
+                        <small>Currently eligible</small>
+                    </div>
+
+                </div>
+
+
+                <div class="voter-stat-card">
+
+                    <div class="stat-icon voted">◉</div>
+
+                    <div>
+                        <span>Votes Cast</span>
+                        <strong id="votesCast">1,872</strong>
+                        <small>76.4% turnout</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SECURITY NOTICE -->
+            <div class="admin-security-banner">
+
+                <div class="security-banner-icon">🔒</div>
+
+                <div>
+                    <strong>Protected Voter Information</strong>
+
+                    <p>
+                        Voter records contain private information.
+                        Only authorized administrators should access
+                        or modify these records.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- TOOLBAR -->
+            <div class="voter-management-card">
+
+                <div class="voter-toolbar">
+
+                    <div class="voter-search">
+
+                        <span class="search-icon">⌕</span>
+
+                        <input
+                            type="search"
+                            id="voterSearch"
+                            placeholder="Search by name, email or voter ID..."
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+
+                    <div class="voter-filters">
+
+                        <select id="electionFilter">
+                            <option value="all">All Elections</option>
+                            <option value="student-council">
+                                Student Council Election 2026
+                            </option>
+                            <option value="environmental">
+                                Environmental Committee Election
+                            </option>
+                            <option value="student-association">
+                                Student Association Election
+                            </option>
+                        </select>
+
+
+                        <select id="verificationFilter">
+                            <option value="all">All Verification</option>
+                            <option value="verified">Verified</option>
+                            <option value="pending">Pending</option>
+                        </select>
+
+
+                        <select id="votingFilter">
+                            <option value="all">All Voting Status</option>
+                            <option value="voted">Voted</option>
+                            <option value="not-voted">Not Voted</option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="record-summary">
+
+                    <div>
+                        <strong id="voterRecordCount">8</strong>
+                        <span>voter records shown</span>
+                    </div>
+
+                    <button id="clearFiltersButton" class="clear-filters">
+                        Clear Filters
+                    </button>
+
+                </div>
+
+
+                <!-- TABLE -->
+                <div class="voter-table-wrapper">
+
+                    <table class="voter-table">
+
+                        <thead>
+                            <tr>
+                                <th>VOTER</th>
+                                <th>VOTER ID</th>
+                                <th>ELECTION</th>
+                                <th>VERIFICATION</th>
+                                <th>VOTING STATUS</th>
+                                <th>REGISTERED</th>
+                                <th>ACTIONS</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="voterTableBody">
+
+                            <tr class="voter-row"
+                                data-name="Rahim Ahmed"
+                                data-email="rahim.ahmed@example.com"
+                                data-id="VTR-1001"
+                                data-election="student-council"
+                                data-verification="verified"
+                                data-voting="voted"
+                                data-status="active"
+                                data-registration="August 15, 2026">
+
+                                <td>
+                                    <div class="voter-person">
+
+                                        <div class="voter-avatar">
+                                            RA
+                                        </div>
+
+                                        <div>
+                                            <strong>Rahim Ahmed</strong>
+                                            <span>rahim.ahmed@example.com</span>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <span class="voter-id">VTR-1001</span>
+                                </td>
+
+                                <td>
+                                    <span class="election-name">
+                                        Student Council 2026
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <span class="status-badge verified">
+                                        ✓ Verified
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <span class="status-badge voted">
+                                        ✓ Voted
+                                    </span>
+                                </td>
+
+                                <td>
+                                    Aug 15, 2026
+                                </td>
+
+                                <td>
+                                    <div class="row-actions">
+
+                                        <button
+                                            class="table-action view-voter"
+                                            title="View voter">
+                                            View
+                                        </button>
+
+                                        <button
+                                            class="table-action toggle-voter"
+                                            title="Disable voter">
+                                            Disable
+                                        </button>
+
+                                    </div>
+                                </td>
+
+                            </tr>
+
+
+                            <tr class="voter-row"
+                                data-name="Nusrat Jahan"
+                                data-email="nusrat.jahan@example.com"
+                                data-id="VTR-1002"
+                                data-election="student-council"
+                                data-verification="verified"
+                                data-voting="not-voted"
+                                data-status="active"
+                                data-registration="August 18, 2026">
+
+                                <td>
+                                    <div class="voter-person">
+
+                                        <div class="voter-avatar">
+                                            NJ
+                                        </div>
+
+                                        <div>
+                                            <strong>Nusrat Jahan</strong>
+                                            <span>nusrat.jahan@example.com</span>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <span class="voter-id">VTR-1002</span>
+                                </td>
+
+                                <td>
+                                    <span class="election-name">
+                                        Student Council 2026
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <span class="status-badge verified">
+                                        ✓ Verified
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <span class="status-badge not-voted">
+                                        Not Voted
+                                    </span>
+                                </td>
+
+                                <td>
+                                    Aug 18, 2026
+                                </td>
+
+                                <td>
+                                    <div class="row-actions">
+
+                                        <button class="table-action view-voter">
+                                            View
+                                        </button>
+
+                                        <button class="table-action toggle-voter">
+                                            Disable
+                                        </button>
+
+                                    </div>
+                                </td>
+
+                            </tr>
+
+
+                            <tr class="voter-row"
+                                data-name="Tanvir Hasan"
+                                data-email="tanvir.hasan@example.com"
+                                data-id="VTR-1003"
+                                data-election="student-council"
+                                data-verification="pending"
+                                data-voting="not-voted"
+                                data-status="active"
+                                data-registration="August 22, 2026">
+
+                                <td>
+                                    <div class="voter-person">
+
+                                        <div class="voter-avatar">
+                                            TH
+                                        </div>
+
+                                        <div>
+                                            <strong>Tanvir Hasan</strong>
+                                            <span>tanvir.hasan@example.com</span>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <span class="voter-id">VTR-1003</span>
+                                </td>
+
+                                <td>
+                                    <span class="election-name">
+                                        Student Council 2026
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <span class="status-badge pending">
+                                        ! Pending
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <span class="status-badge not-voted">
+                                        Not Voted
+                                    </span>
+                                </td>
+
+                                <td>
+                                    Aug 22, 2026
+                                </td>
+
+                                <td>
+                                    <div class="row-actions">
+
+                                        <button class="table-action view-voter">
+                                            View
+                                        </button>
+
+                                        <button class="table-action verify-voter">
+                                            Verify
+                                        </button>
+
+                                    </div>
+                                </td>
+
+                            </tr>
+
+
+                            <tr class="voter-row"
+                                data-name="Ayesha Rahman"
+                                data-email="ayesha.rahman@example.com"
+                                data-id="VTR-1004"
+                                data-election="environmental"
+                                data-verification="verified"
+                                data-voting="voted"
+                                data-status="active"
+                                data-registration="August 25, 2026">
+
+                                <td>
+                                    <div class="voter-person">
+
+                                        <div class="voter-avatar">
+                                            AR
+                                        </div>
+
+                                        <div>
+                                            <strong>Ayesha Rahman</strong>
+                                            <span>ayesha.rahman@example.com</span>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <span class="voter-id">VTR-1004</span>
+                                </td>
+
+                                <td>
+                                    <span class="election-name">
+                                        Environmental Committee
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <span class="status-badge verified">
+                                        ✓ Verified
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <span class="status-badge voted">
+                                        ✓ Voted
+                                    </span>
+                                </td>
+
+                                <td>
+                                    Aug 25, 2026
+                                </td>
+
+                                <td>
+                                    <div class="row-actions">
+
+                                        <button class="table-action view-voter">
+                                            View
+                                        </button>
+
+                                        <button class="table-action toggle-voter">
+                                            Disable
+                                        </button>
+
+                                    </div>
+                                </td>
+
+                            </tr>
+
+
+                            <tr class="voter-row"
+                                data-name="Sabbir Hossain"
+                                data-email="sabbir.hossain@example.com"
+                                data-id="VTR-1005"
+                                data-election="environmental"
+                                data-verification="verified"
+                                data-voting="not-voted"
+                                data-status="active"
+                                data-registration="August 28, 2026">
+
+                                <td>
+                                    <div class="voter-person">
+
+                                        <div class="voter-avatar">
+                                            SH
+                                        </div>
+
+                                        <div>
+                                            <strong>Sabbir Hossain</strong>
+                                            <span>sabbir.hossain@example.com</span>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <span class="voter-id">VTR-1005</span>
+                                </td>
+
+                                <td>
+                                    <span class="election-name">
+                                        Environmental Committee
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <span class="status-badge verified">
+                                        ✓ Verified
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <span class="status-badge not-voted">
+                                        Not Voted
+                                    </span>
+                                </td>
+
+                                <td>
+                                    Aug 28, 2026
+                                </td>
+
+                                <td>
+                                    <div class="row-actions">
+
+                                        <button class="table-action view-voter">
+                                            View
+                                        </button>
+
+                                        <button class="table-action toggle-voter">
+                                            Disable
+                                        </button>
+
+                                    </div>
+                                </td>
+
+                            </tr>
+
+
+                            <tr class="voter-row"
+                                data-name="Mehedi Islam"
+                                data-email="mehedi.islam@example.com"
+                                data-id="VTR-1006"
+                                data-election="student-association"
+                                data-verification="pending"
+                                data-voting="not-voted"
+                                data-status="active"
+                                data-registration="September 1, 2026">
+
+                                <td>
+                                    <div class="voter-person">
+
+                                        <div class="voter-avatar">
+                                            MI
+                                        </div>
+
+                                        <div>
+                                            <strong>Mehedi Islam</strong>
+                                            <span>mehedi.islam@example.com</span>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <span class="voter-id">VTR-1006</span>
+                                </td>
+
+                                <td>
+                                    <span class="election-name">
+                                        Student Association
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <span class="status-badge pending">
+                                        ! Pending
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <span class="status-badge not-voted">
+                                        Not Voted
+                                    </span>
+                                </td>
+
+                                <td>
+                                    Sep 1, 2026
+                                </td>
+
+                                <td>
+                                    <div class="row-actions">
+
+                                        <button class="table-action view-voter">
+                                            View
+                                        </button>
+
+                                        <button class="table-action verify-voter">
+                                            Verify
+                                        </button>
+
+                                    </div>
+                                </td>
+
+                            </tr>
+
+
+                            <tr class="voter-row"
+                                data-name="Farzana Akter"
+                                data-email="farzana.akter@example.com"
+                                data-id="VTR-1007"
+                                data-election="student-council"
+                                data-verification="verified"
+                                data-voting="voted"
+                                data-status="disabled"
+                                data-registration="August 10, 2026">
+
+                                <td>
+                                    <div class="voter-person">
+
+                                        <div class="voter-avatar disabled-avatar">
+                                            FA
+                                        </div>
+
+                                        <div>
+                                            <strong>Farzana Akter</strong>
+                                            <span>farzana.akter@example.com</span>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <span class="voter-id">VTR-1007</span>
+                                </td>
+
+                                <td>
+                                    <span class="election-name">
+                                        Student Council 2026
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <span class="status-badge verified">
+                                        ✓ Verified
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <span class="status-badge voted">
+                                        ✓ Voted
+                                    </span>
+                                </td>
+
+                                <td>
+                                    Aug 10, 2026
+                                </td>
+
+                                <td>
+                                    <div class="row-actions">
+
+                                        <button class="table-action view-voter">
+                                            View
+                                        </button>
+
+                                        <button class="table-action enable-voter">
+                                            Enable
+                                        </button>
+
+                                    </div>
+                                </td>
+
+                            </tr>
+
+
+                            <tr class="voter-row"
+                                data-name="Imran Chowdhury"
+                                data-email="imran.chowdhury@example.com"
+                                data-id="VTR-1008"
+                                data-election="student-council"
+                                data-verification="verified"
+                                data-voting="not-voted"
+                                data-status="active"
+                                data-registration="September 2, 2026">
+
+                                <td>
+                                    <div class="voter-person">
+
+                                        <div class="voter-avatar">
+                                            IC
+                                        </div>
+
+                                        <div>
+                                            <strong>Imran Chowdhury</strong>
+                                            <span>imran.chowdhury@example.com</span>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <span class="voter-id">VTR-1008</span>
+                                </td>
+
+                                <td>
+                                    <span class="election-name">
+                                        Student Council 2026
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <span class="status-badge verified">
+                                        ✓ Verified
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <span class="status-badge not-voted">
+                                        Not Voted
+                                    </span>
+                                </td>
+
+                                <td>
+                                    Sep 2, 2026
+                                </td>
+
+                                <td>
+                                    <div class="row-actions">
+
+                                        <button class="table-action view-voter">
+                                            View
+                                        </button>
+
+                                        <button class="table-action toggle-voter">
+                                            Disable
+                                        </button>
+
+                                    </div>
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- EMPTY STATE -->
+                <div class="voter-empty" id="voterEmpty">
+
+                    <div class="empty-icon">⌕</div>
+
+                    <h3>No voters found</h3>
+
+                    <p>
+                        Try changing your search or filter criteria.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOTER SECURITY -->
+            <div class="voter-footer-note">
+
+                <span>🔐</span>
+
+                <div>
+                    <strong>Privacy & Security</strong>
+
+                    <p>
+                        VoteSphere administrators should only access
+                        voter information when required for election
+                        administration. Passwords and authentication
+                        secrets are never displayed here.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- VIEW VOTER MODAL -->
+<div class="modal-overlay" id="voterModal">
+
+    <div class="voter-modal">
+
+        <button class="modal-close" id="voterModalClose">
+            ×
+        </button>
+
+        <div class="modal-heading">
+
+            <div class="large-voter-avatar" id="modalVoterAvatar">
+                RA
+            </div>
+
+            <div>
+                <span class="modal-eyebrow">VOTER PROFILE</span>
+                <h2 id="modalVoterName">Rahim Ahmed</h2>
+                <p id="modalVoterId">VTR-1001</p>
+            </div>
+
+        </div>
+
+
+        <div class="modal-status-row">
+
+            <span class="status-badge verified" id="modalVerification">
+                ✓ Verified
+            </span>
+
+            <span class="status-badge voted" id="modalVotingStatus">
+                ✓ Voted
+            </span>
+
+            <span class="status-badge active" id="modalAccountStatus">
+                Active
+            </span>
+
+        </div>
+
+
+        <div class="voter-detail-grid">
+
+            <div class="detail-item">
+                <span>Email Address</span>
+                <strong id="modalEmail">
+                    rahim.ahmed@example.com
+                </strong>
+            </div>
+
+            <div class="detail-item">
+                <span>Election</span>
+                <strong id="modalElection">
+                    Student Council 2026
+                </strong>
+            </div>
+
+            <div class="detail-item">
+                <span>Registration Date</span>
+                <strong id="modalRegistration">
+                    August 15, 2026
+                </strong>
+            </div>
+
+            <div class="detail-item">
+                <span>Eligibility</span>
+                <strong id="modalEligibility">
+                    Eligible
+                </strong>
+            </div>
+
+        </div>
+
+
+        <div class="modal-notice">
+            <span>🔒</span>
+
+            <p>
+                This demo profile intentionally excludes passwords,
+                authentication secrets, national identification numbers
+                and other unnecessary sensitive information.
+            </p>
+        </div>
+
+
+        <button class="btn btn-primary modal-done"
+                id="voterModalDone">
+            Close Profile
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- FOOTER -->
+<footer class="admin-footer">
+    <p>
+        © <span id="footerYear"></span>
+        VoteSphere. Administration Panel.
+    </p>
+
+    <span>Secure Election Management</span>
+</footer>
+
+
+<script src="../js/app.js"></script>
+<script src="../js/admin.js"></script>
+<script src="../js/admin-voters.js"></script>
+
+</body>
+</html>
