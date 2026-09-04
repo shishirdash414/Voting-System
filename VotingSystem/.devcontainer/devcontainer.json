@@ -1,0 +1,4 @@
+{
+  "name": "VoteSphere",
+  "forwardPorts": [8000]
+}
